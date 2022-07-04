@@ -27,7 +27,7 @@ socket.on("room",({room,users})=>{
 
 
 socket.on("message",message=>{
-    alert(`${message.username} says : ${message.text}`);
+    alert(`${message.text}`);
 })
 
 socket.on("cmessage",msg=>{
