@@ -34,7 +34,7 @@ socket.on("cmessage",msg=>{
     //add the message to the DOM
     const newel = document.createElement("div")
     newel.innerHTML =` <div class="message">
-    <p class="meta">${msg.username}<span>${msg.time}</span></p>
+    <p class="meta">${msg.username}  <span>${msg.time}</span></p>
     <p class="text">
         ${msg.text}
     </p>
