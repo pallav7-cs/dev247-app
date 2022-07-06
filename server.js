@@ -42,8 +42,10 @@ io.on("connection", (socket) => {
   socket.on("chatMessage", (msg) => {
     let user = getCurrentUser(socket.id);
     //send the received message to everyone on the room
+    if(user){
     socket.broadcast.to(user.room).emit("cmessage", formatMessage(user.username, msg));
     socket.emit("cmsgself",formatMessage("Me",msg));
+    }
   });
 
   //when a client disconnects
