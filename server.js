@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, "public")));
 const server = http.createServer(app);
 const io = socketio(server);
 
-const mod = "guardian";
+const mod = "admin";
 //to do when a new client connects
 io.on("connection", (socket) => {
   console.log(`new socket connected`);
@@ -23,7 +23,7 @@ io.on("connection", (socket) => {
     //below message is sent to the client connected
     socket.emit(
       "message",
-      formatMessage(mod, `${user.username}Welcome to chatty`)
+      formatMessage(mod, `${user.username}Welcome to devchat!`)
     );
     socket.broadcast
       .to(user.room)
@@ -42,7 +42,8 @@ io.on("connection", (socket) => {
   socket.on("chatMessage", (msg) => {
     let user = getCurrentUser(socket.id);
     //send the received message to everyone on the room
-    io.to(user.room).emit("cmessage", formatMessage(user.username, msg));
+    socket.broadcast.to(user.room).emit("cmessage", formatMessage(user.username, msg));
+    socket.emit("cmsgself",formatMessage("Me",msg));
   });
 
   //when a client disconnects
@@ -64,6 +65,6 @@ io.on("connection", (socket) => {
 
 const PORT = 3000 || process.env.PORT;
 
-server.listen( process.env.PORT, () => {
+server.listen( 3000, () => {
   console.log("app running");
 });

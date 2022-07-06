@@ -8,7 +8,6 @@ function addUser(id, username, room){
     const user ={id, username, room};
 
     userList.push(user);
-    console.log(userList);
     return user;
 }
 

@@ -99,7 +99,22 @@ a {
 	margin-bottom: 15px;
 	background-color: var(--light-color);
 	border-radius: 5px;
+	display: inline-block
+	
 }
+
+.chat-messages .message-self{
+	padding: 10px;
+	margin-bottom: 15px;
+	background-color: var(--success-color);
+	border-radius: 5px;
+	display: inline-block;
+	margin-left: 80%
+	
+
+}
+
+
 
 .chat-messages .message .meta {
 	font-size: 15px;
@@ -109,7 +124,20 @@ a {
 	margin-bottom: 7px;
 }
 
+.chat-messages .message-self .meta {
+	font-size: 15px;
+	font-weight: bold;
+	color: #777;
+	opacity: 0.7;
+	margin-bottom: 7px;
+}
+
 .chat-messages .message .meta span {
+	color: #777;
+}
+
+
+.chat-messages .message-self .meta span {
 	color: #777;
 }
 

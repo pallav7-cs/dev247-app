@@ -45,6 +45,21 @@ socket.on("cmessage",msg=>{
 
 })
 
+socket.on("cmsgself",msg=>{
+     //add the message to the DOM
+     const newel = document.createElement("div")
+     newel.innerHTML =` <div class="message-self">
+     <p class="meta">${msg.username}  <span>${msg.time}</span></p>
+     <p class="text">
+         ${msg.text}
+     </p>
+ </div>`
+     document.querySelector(".chat-messages").appendChild(newel)
+ //on receiving new messages scroll to the bottom 
+     chatmsg.scrollTop = chatmsg.scrollHeight;
+ 
+})
+
 //message submit
 chatForm.addEventListener("submit",(e)=>{
     e.preventDefault();
@@ -59,4 +74,15 @@ chatForm.addEventListener("submit",(e)=>{
      e.target.elements.msg.value="";
      e.target.elements.msg.focus();
     
+})
+
+document.querySelector("#leaving").addEventListener("click",(e)=>{
+    let leaveconfirm = confirm("Are you sure you want to leave the chatroom? your messages won't be saved");
+    if(leaveconfirm)
+    {
+        window.location="index.html"
+    }
+    else{
+        //do nothing
+    }
 })
